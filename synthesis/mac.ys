@@ -1,0 +1,21 @@
+# Yosys Synthesis Script — MAC Unit
+# Target: OSU 0.18um standard cell library
+# Run: yosys mac.ys
+
+# Read RTL
+read_verilog ../rtl/mac.v
+
+# Generic synthesis pass
+synth -top mac
+
+# Technology mapping: flip-flops
+dfflibmap -liberty /home/coe-9/Desktop/Technology_PDKs/osu018/osu018_stdcells.lib
+
+# Technology mapping: combinational logic (ABC)
+abc -liberty /home/coe-9/Desktop/Technology_PDKs/osu018/osu018_stdcells.lib
+
+# Write gate-level netlist
+write_verilog synth_mac.v
+
+# Print synthesis statistics (area, cell counts)
+stat -liberty /home/coe-9/Desktop/Technology_PDKs/osu018/osu018_stdcells.lib
