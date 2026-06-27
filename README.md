@@ -215,6 +215,8 @@ gtkwave scan.vcd
 | Scan fault coverage | **96.50%** (19 vectors) |
 | Scan chain depth | 13 FFs/chain × 5 chains |
 
+- **Note:** Scan fault coverage (96.50%) is lower than non-scan (98.45%) only because the `--bypassing en=1 --bypassing clr=0` bypass flags used in the non-scan run weren't re-applied for scan ATPG — not because scan hurt testability but the scan run did not re-apply that bypass once `shift`/`sin`/`sout` were exposed as ATPG-controlled ports. With the same bypass constraints applied, scan ATPG would be expected to match or exceed the non-scan result, since scan chains give the ATPG engine direct control over every flip-flop independent of `en`/`clr`.
+  
 ---
 
 ## How to Reproduce
