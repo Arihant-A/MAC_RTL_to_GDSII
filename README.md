@@ -64,7 +64,6 @@ mac-rtl-to-gdsii/
 ├── dft/
 │   ├── mac_synth.v         # Fault-synthesized netlist
 │   ├── mac_cut.v           # Sequential-cut netlist for ATPG
-│   ├── mac_atpg.json       # ATPG test vectors (non-scan)
 │   └── scan/
 │       ├── mac_scan_manual.v   # Manually scan-inserted netlist (5-chain)
 │       ├── tb_mac_scan.v       # Scan verification testbench
